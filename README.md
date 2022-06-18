@@ -1,2 +1,2 @@
-# chartizard
-Discord bot for making a simple chart from reacts
+# :dragon: :fire: chartizard
+Super simple Discord bot for making a chart from reactions
