@@ -1,6 +1,6 @@
 import discord
 
-from chart import chart_from_map
+from chart import Chart
 
 class ChartizardClient(discord.Client):
   async def on_ready(self):
@@ -24,9 +24,8 @@ class ChartizardClient(discord.Client):
     do_sort = 'sort' in message.content
 
     # Create chart embed
-    chart_text = chart_from_map(react_counts_map, do_sort=do_sort)
-    embed = discord.Embed(title=':fire: Chartizard Chart', color=0xEEBB01)
-    embed.add_field(name='Results', value=chart_text, inline=True)
+    chart = Chart(react_counts_map, message.reference.message_id, do_sort)
+    embed = chart.to_embed()
 
     # Send embed
     await message.channel.send(embed=embed)
